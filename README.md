@@ -1,25 +1,33 @@
+## Project Structure
+
 project-root/
 ├── config/
-│   └── firebase.js          # Firebase Admin SDK init
+│   └── firebase.js          # Firebase Admin SDK initialization
 ├── controllers/
-│   └── apiKey.js             # Generate API key endpoint
+│   └── apiKey.js            # Generate API key endpoint logic
 ├── middleware/
-│   └── apiKeyAuth.js         # Verify API key middleware
+│   └── apiKeyAuth.js        # API key verification middleware
 ├── utils/
-│   └── encryption.js         # Encrypt/decrypt helpers (DRY)
+│   └── encryption.js        # Encryption/decryption helpers (DRY)
 ├── routes/
-│   └── apiKey.js             # Route definitions
-├── .env
-├── index.js                  # Express entry point
+│   └── apiKey.js            # API key related route definitions
+├── .env                     # Environment variables
+├── index.js                 # Express server entry point
 └── package.json
 
-# generate encryption secret
+
+## Setup Secrets
+
+1. Generate encryption secret (32 bytes):
+```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-
-# generate a JWT secret
+```
+2. Generate JWT secret (16 bytes):
+```bash
 node -e "console.log(require('crypto').randomBytes(16).toString('hex'))"
-
-Paste the outputs into .env:
+```
+3. Add to .env file:
 JWT_SECRET=<output-from-second-command>
-FIREBASE_SERVICE_ACCOUNT=<service-account-json>
 API_KEY_ENCRYPTION_SECRET=<output-from-first-command>
+FIREBASE_SERVICE_ACCOUNT={"type":"service_account", ...}
+
