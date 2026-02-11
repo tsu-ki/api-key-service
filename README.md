@@ -1,5 +1,6 @@
 ## Project Structure
 
+```
 project-root/
 ├── config/
 │   └── firebase.js          # Firebase Admin SDK initialization
@@ -14,6 +15,7 @@ project-root/
 ├── .env                     # Environment variables
 ├── index.js                 # Express server entry point
 └── package.json
+```
 
 
 ## Setup Secrets
